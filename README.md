@@ -1,4 +1,4 @@
-# 🐍 Database Management System - Coursework & Projects
+# 🖥️ Database Management System - Coursework & Projects
 
 ![IILM University](https://img.shields.io/badge/University-IILM-blue)
 ![Course](https://img.shields.io/badge/Course-Database%20Management%20System-orange)
