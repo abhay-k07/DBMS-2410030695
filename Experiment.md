@@ -265,15 +265,7 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   WHERE ENAME LIKE 'S%';
   ```
 
-- **Q4. List employees whose name contains 'S'**
-
-  ```sql
-  SELECT *
-  FROM EMPLOYEE
-  WHERE ENAME LIKE '%S%';
-  ```
-
-- **Q5. List employees whose name ends with 'S'**
+- **Q4. List employees whose name ends with 'S'**
 
   ```sql
   SELECT *
@@ -281,7 +273,7 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   WHERE ENAME LIKE '%S';
   ```
 
-- **Q6. List employees who are in department 10, 20, or 30 OR whose job is CLERK, SALESMAN, or ANALYST**
+- **Q5. List employees who are in department 10, 20, or 30 OR whose job is CLERK, SALESMAN, or ANALYST**
 
   ```sql
   SELECT ENAME, JOB, DEPTNO
@@ -290,7 +282,7 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   OR JOB IN ('CLERK', 'SALESMAN', 'ANALYST');
   ```
 
-- **Q7. List employees having non-null commission**
+- **Q6. List employees having non-null commission**
 
   ```sql
   SELECT ENAME
@@ -298,7 +290,7 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   WHERE COMM IS NOT NULL;
   ```
 
-- **Q8. Find total salary (salary + commission) for each employee**
+- **Q7. Find total salary (salary + commission) for each employee**
 
   ```sql
   SELECT EMPNO,
@@ -307,7 +299,7 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   GROUP BY EMPNO;
   ```
 
-- **Q9. Display department number and annual salary (SAL*12) for each employee**
+- **Q8. Display department number and annual salary (SAL*12) for each employee**
 
   ```sql
   SELECT DEPTNO, SAL * 12 AS ANNUAL_SALARY
@@ -315,7 +307,7 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   GROUP BY EMPNO;
   ```
 
-- **Q10. List clerks whose salary is greater than 3000**
+- **Q9. List clerks whose salary is greater than 3000**
 
   ```sql
   SELECT ENAME
@@ -323,7 +315,7 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   WHERE JOB IN ('CLERK') AND SAL > 3000;
   ```
 
-- **Q11. List employees whose job is CLERK, SALESMAN, or ANALYST and salary is greater than 3000**
+- **Q10. List employees whose job is CLERK, SALESMAN, or ANALYST and salary is greater than 3000**
 
   ```sql
   SELECT ENAME
