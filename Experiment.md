@@ -502,3 +502,103 @@ This file documents the SQL statements in `EXPERIMENT.sql`, describing the schem
   ```
 
 ---
+
+### 7. EXP6 – Date and Conversion Functions
+
+- **Q1. Display empno, ename, deptno from employee table. Instead of display department numbers display the related department name (Use decode function)**
+
+  ```sql
+  SELECT Empno, Ename,
+       CASE Deptno
+           WHEN 10 THEN 'ACCOUNTING'
+           WHEN 20 THEN 'RESEARCH'
+           WHEN 30 THEN 'SALES'
+           WHEN 40 THEN 'OPERATIONS'
+           ELSE 'UNKNOWN'
+       END AS DEPARTMENT_NAME
+  FROM EMPLOYEE;
+  ```
+
+- **Q2. Display your age in days.**
+
+  ```sql
+  SELECT DATEDIFF(CURDATE(), '2007-02-06') AS AGE_IN_DAYS;
+  ```
+
+- **Q3. Display your age in months.**
+
+  ```sql
+  SELECT TIMESTAMPDIFF(MONTH, '2007-02-06', CURDATE()) AS AGE_IN_MONTHS;
+  ```
+
+- **Q4. Display the current date as 15th August Friday Nineteen Ninety-Seven.**
+
+  ```sql
+  SELECT DATE_FORMAT(CURDATE(), '%D %M %W %Y') AS FORMATTED_DATE;
+  ```
+
+- **Q5. Display: Scott has joined the company on Wednesday 13th August Nineteen Ninety for Every employee**
+
+  ```sql
+  SELECT CONCAT(
+           UPPER(LEFT(Ename, 1)), LOWER(SUBSTRING(Ename, 2)), 
+           ' has joined the company on ', 
+           DATE_FORMAT(Hiredate, '%W %D %M %Y')
+       ) AS JOIN_INFO 
+  FROM EMPLOYEE;
+  ```
+
+- **Q6. Find the date for nearest Saturday after current date.**
+
+  ```sql
+  SELECT DATE_ADD(CURDATE(), INTERVAL (7 - DAYOFWEEK(CURDATE())) DAY) AS NEAREST_SATURDAY;
+  ```
+
+- **Q7. Display current time.**
+
+  ```sql
+  SELECT DATE_FORMAT(NOW(), '%h:%i:%s %p') AS `CURRENT_TIME`;
+  ```
+
+- **Q8. Display the date three months Before the current date**
+
+  ```sql
+  SELECT DATE_SUB(CURDATE(), INTERVAL 3 MONTH) AS THREE_MONTHS_AGO;
+  ```
+
+- **Q9. Display those employees who joined in the company in the month of Dec.**
+
+  ```sql
+  SELECT * FROM EMPLOYEE 
+  WHERE MONTH(Hiredate) = 12;
+  ```
+
+- **Q10. Display those employees whose first 2 characters from hire date -last 2 characters of salary.**
+
+  ```sql
+  SELECT * FROM EMPLOYEE 
+  WHERE DAY(Hiredate) = RIGHT(CAST(Sal AS CHAR), 2);
+  ```
+
+- **Q11. Display those employees whose 10% of salary is equal to the year of joining.**
+
+  ```sql
+  SELECT * FROM EMPLOYEE 
+  WHERE (Sal * 0.10) = RIGHT(CAST(YEAR(Hiredate) AS CHAR), 2);
+  ```
+
+- **Q12. Display those employees who joined the company before 15 of the months.**
+
+  ```sql
+  SELECT * FROM EMPLOYEE 
+  WHERE DAY(Hiredate) < 15;
+  ```
+
+- **Q13. Display those employees whose joining DATE is available in deptno**
+
+  ```sql
+  SELECT * FROM EMPLOYEE 
+  WHERE DAY(Hiredate) = Deptno;
+  ```
+
+---
